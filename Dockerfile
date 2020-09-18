@@ -7,7 +7,7 @@ RUN groupadd promort && useradd -g promort promort
 
 RUN apt-get update \
     && apt-get install -y curl build-essential \
-    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g grunt
 
@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.5.2
+ARG PROMORT_VERSION=0.5.3
 
 USER promort
 
