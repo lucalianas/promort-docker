@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.5.4-rc1
+ARG PROMORT_VERSION=0.5.4
 
 USER promort
 
