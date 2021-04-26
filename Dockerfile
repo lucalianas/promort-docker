@@ -1,4 +1,4 @@
-FROM python:2-stretch
+FROM python:3-stretch
 LABEL maintainer="luca.lianas@crs4.it"
 
 RUN mkdir -p /home/promort
@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.6.2
+ARG PROMORT_VERSION=0.7.0
 
 USER promort
 
@@ -30,8 +30,9 @@ USER root
 
 WORKDIR ${APP_HOME}/ProMort/
 
-RUN pip install -r requirements_pg.txt \
-    && pip install gunicorn==19.9.0
+RUN pip install --upgrade pip \
+    && pip install -r requirements_pg.txt \
+    && pip install gunicorn==20.1.0
 
 USER promort
 
