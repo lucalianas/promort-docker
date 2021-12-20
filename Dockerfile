@@ -1,4 +1,4 @@
-FROM python:3-stretch
+FROM python:3.9-buster
 LABEL maintainer="luca.lianas@crs4.it"
 
 RUN mkdir -p /home/promort
@@ -6,7 +6,7 @@ RUN mkdir -p /home/promort
 RUN groupadd promort && useradd -g promort promort
 
 RUN apt-get update \
-    && apt-get install -y curl build-essential \
+    && apt-get install -y curl build-essential git \
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g grunt
@@ -17,18 +17,17 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.9.1
+ARG PROMORT_BRANCH=airc
 
 USER promort
 
-RUN wget https://github.com/crs4/promort/archive/v${PROMORT_VERSION}.zip -P ${APP_HOME} \
-    && unzip ${APP_HOME}/v${PROMORT_VERSION}.zip -d ${APP_HOME} \
-    && mv ${APP_HOME}/ProMort-${PROMORT_VERSION} ${APP_HOME}/ProMort \
-    && rm ${APP_HOME}/v${PROMORT_VERSION}.zip
-
-USER root
+RUN git clone https://github.com/crs4/ProMort.git
 
 WORKDIR ${APP_HOME}/ProMort/
+
+RUN git checkout ${PROMORT_BRANCH}
+
+USER root
 
 RUN pip install --upgrade pip \
     && pip install -r requirements_pg.txt \
