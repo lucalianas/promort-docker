@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_BRANCH=airc
+ARG PROMORT_TAG=airc-0.1.0
 
 USER promort
 
@@ -25,7 +25,7 @@ RUN git clone https://github.com/crs4/ProMort.git
 
 WORKDIR ${APP_HOME}/ProMort/
 
-RUN git checkout ${PROMORT_BRANCH}
+RUN git checkout ${PROMORT_TAG}
 
 USER root
 
