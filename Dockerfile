@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_TAG=airc-0.2.0
+ARG PROMORT_TAG=airc-0.2.3
 
 USER promort
 
