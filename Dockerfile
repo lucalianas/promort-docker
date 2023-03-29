@@ -23,12 +23,12 @@ USER promort
 
 RUN wget https://github.com/crs4/promort/archive/v${PROMORT_VERSION}.zip -P ${APP_HOME} \
     && unzip ${APP_HOME}/v${PROMORT_VERSION}.zip -d ${APP_HOME} \
-    && mv ${APP_HOME}/ProMort-${PROMORT_VERSION} ${APP_HOME}/ProMort \
+    && mv ${APP_HOME}/DigitalPathologyPlatform-${PROMORT_VERSION} ${APP_HOME}/DigitalPathologyPlatform \
     && rm ${APP_HOME}/v${PROMORT_VERSION}.zip
 
 USER root
 
-WORKDIR ${APP_HOME}/ProMort/
+WORKDIR ${APP_HOME}/DigitalPathologyPlatform/
 
 RUN pip install --upgrade pip \
     && pip install -r requirements_pg.txt \
@@ -51,7 +51,7 @@ COPY resources/80-apply-migrations.sh \
 
 USER promort
 
-WORKDIR ${APP_HOME}/ProMort/promort/
+WORKDIR ${APP_HOME}/DigitalPathologyPlatform/promort/
 
 EXPOSE 8080
 
