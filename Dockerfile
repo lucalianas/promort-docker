@@ -1,4 +1,4 @@
-FROM python:3-stretch
+FROM python:3.8-bullseye
 LABEL maintainer="luca.lianas@crs4.it"
 
 RUN mkdir -p /home/promort
@@ -7,7 +7,7 @@ RUN groupadd promort && useradd -g promort promort
 
 RUN apt-get update \
     && apt-get install -y curl build-essential \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g grunt
 
