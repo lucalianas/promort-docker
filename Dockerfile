@@ -1,4 +1,4 @@
-FROM python:3-stretch
+FROM python:3.8-bullseye
 LABEL maintainer="luca.lianas@crs4.it"
 
 RUN mkdir -p /home/promort
@@ -7,7 +7,7 @@ RUN groupadd promort && useradd -g promort promort
 
 RUN apt-get update \
     && apt-get install -y curl build-essential \
-    && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+    && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g grunt
 
@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.10.1
+ARG PROMORT_VERSION=0.11.0
 
 USER promort
 
@@ -55,4 +55,4 @@ WORKDIR ${APP_HOME}/DigitalPathologyPlatform/promort/
 
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/bin/entrypoinyt.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
