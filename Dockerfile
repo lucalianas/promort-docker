@@ -55,4 +55,4 @@ WORKDIR ${APP_HOME}/DigitalPathologyPlatform/promort/
 
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/bin/entrypoinyt.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
