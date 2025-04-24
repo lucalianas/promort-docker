@@ -17,7 +17,7 @@ RUN mkdir ${APP_HOME} \
     && chown -R promort ${HOME}
 WORKDIR ${APP_HOME}
 
-ARG PROMORT_VERSION=0.11.0-beta.2
+ARG PROMORT_VERSION=0.11.0
 
 USER promort
 
